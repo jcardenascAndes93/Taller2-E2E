@@ -89,4 +89,29 @@ context('Login Tests', () => {
         cy.contains('Exercise').click({ force: true });
         cy.get('.btn-footer').click();
     });
+
+    it('Create daily task', () => {
+        cy.visit('https://habitica.com/static/home');
+
+        // Login        
+        cy.get('.login-button').click();
+        cy.wait(2000)
+        cy.get('#usernameInput').type('j.cardenasc@uniandes.edu.co');
+        cy.get('#passwordInput').type('Habitica@uniandes.edu.co');
+        cy.get('.btn-info[type="submit"]').click()
+
+        // Access to plus button
+        cy.get('.diamond-btn').click({ force: true });
+        cy.wait(300)
+        cy.get('div[class="svg-icon icon-daily"]').first().click({ force: true });
+        cy.wait(1000)
+
+        // Complete form
+        cy.get('input[placeholder="Add a title"]').type('Mi daily No. 1');
+        cy.get('textarea[placeholder="Add notes"]').type('Algunas notas', { force: true });
+        cy.get('button[tab-index="0"').click({ force: true })
+        cy.get('button[tab-index="6"').click({ force: true })
+        cy.get('.btn-footer').click();
+
+    });
 });

@@ -35,7 +35,7 @@ context('Login Tests', () => {
     });
 
     it('Create public challenge', () => {
-        //cy.server();
+
         cy.visit('https://habitica.com/static/home');
 
         // Login        
@@ -64,5 +64,29 @@ context('Login Tests', () => {
         cy.contains('Close').click({ force: true })
         cy.get('.alert-warning').should('be.visible');
 
+    });
+
+    it('Create habit', () => {
+        cy.visit('https://habitica.com/static/home');
+
+        // Login        
+        cy.get('.login-button').click();
+        cy.wait(2000)
+        cy.get('#usernameInput').type('j.cardenasc@uniandes.edu.co');
+        cy.get('#passwordInput').type('Habitica@uniandes.edu.co');
+        cy.get('.btn-info[type="submit"]').click()
+
+        // Access to plus button
+        cy.get('.diamond-btn').click({ force: true });
+        cy.wait(300)
+        cy.get('div[class="create-task-btn diamond-btn"]').first().click({ force: true });
+        cy.wait(500)
+
+        // Complete form
+        cy.get('input[placeholder="Add a title"]').type('Mi hábito No. 1');
+        cy.get('textarea[placeholder="Add notes"]').type('Algunas notas');
+        cy.get('div[class="items-none"]').click({ force: true });
+        cy.contains('Exercise').click({ force: true });
+        cy.get('.btn-footer').click();
     });
 });

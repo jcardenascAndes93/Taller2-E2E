@@ -1,0 +1,17 @@
+{
+    "name": "puppeteer",
+    "version": "1.0.0",
+    "description": "Exploring puppeteer and jest for automated testing",
+    "main": "index.js",
+    "dependencies": {
+        "jest": "^26.4.2",
+        "jest-puppeteer": "^4.4.0",
+        "puppeteer": "^5.2.1"
+    },
+    "devDependencies": {},
+    "scripts": {
+        "test": "jest || exit 0"
+    },
+    "author": "jcardenasc93",
+    "license": "ISC"
+}

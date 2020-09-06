@@ -10,7 +10,7 @@ beforeAll(async() => {
 
 describe("Test access to register", () => {
     test("Check page header", async() => {
-        await page.waitFor(2000);
+        await page.waitFor(3500);
         const h2Handle = await page.$("h2");
         const html = await page.evaluate(h2Handle => h2Handle.innerHTML, h2Handle);
         expect(html).toBe("Register");

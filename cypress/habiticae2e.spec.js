@@ -12,8 +12,8 @@ context('Login Tests', () => {
     })
     it('Login', () => {
         cy.visit('https://habitica.com/static/home')
-
-        // Login
+        cy.wait(2000)
+            // Login
         cy.get('.login-button').click();
         cy.get('#usernameInput').type('j.cardenasc@uniandes.edu.co');
         cy.get('#passwordInput').type('Habitica@uniandes.edu.co');
@@ -23,8 +23,8 @@ context('Login Tests', () => {
 
     it('Register user with previous data', () => {
         cy.visit('https://habitica.com/static/home')
-
-        // Sign up with existing account
+        cy.wait(2000)
+            // Sign up with existing account
         cy.get('#usernameInput').type('jcardenasMiso');
         cy.get('input[placeholder="Email"]').type('j.cardenasc@uniandes.edu.co');
         cy.get('input[placeholder="Password"]').type('Habitica@uniandes.edu.co');
@@ -37,8 +37,8 @@ context('Login Tests', () => {
     it('Create public challenge', () => {
 
         cy.visit('https://habitica.com/static/home');
-
-        // Login        
+        cy.wait(2000)
+            // Login        
         cy.get('.login-button').click();
         cy.wait(2000)
         cy.get('#usernameInput').type('j.cardenasc@uniandes.edu.co');
@@ -68,8 +68,8 @@ context('Login Tests', () => {
 
     it('Create habit', () => {
         cy.visit('https://habitica.com/static/home');
-
-        // Login        
+        cy.wait(2000)
+            // Login        
         cy.get('.login-button').click();
         cy.wait(2000)
         cy.get('#usernameInput').type('j.cardenasc@uniandes.edu.co');
@@ -77,6 +77,7 @@ context('Login Tests', () => {
         cy.get('.btn-info[type="submit"]').click()
 
         // Access to plus button
+        cy.wait(2000)
         cy.get('.diamond-btn').click({ force: true });
         cy.wait(300)
         cy.get('div[class="create-task-btn diamond-btn"]').first().click({ force: true });
@@ -92,15 +93,15 @@ context('Login Tests', () => {
 
     it('Create daily task', () => {
         cy.visit('https://habitica.com/static/home');
-
-        // Login        
+        cy.wait(2000)
+            // Login        
         cy.get('.login-button').click();
         cy.wait(2000)
         cy.get('#usernameInput').type('j.cardenasc@uniandes.edu.co');
         cy.get('#passwordInput').type('Habitica@uniandes.edu.co');
         cy.get('.btn-info[type="submit"]').click()
-
-        // Access to plus button
+        cy.wait(2000)
+            // Access to plus button
         cy.get('.diamond-btn').click({ force: true });
         cy.wait(300)
         cy.get('div[class="svg-icon icon-daily"]').first().click({ force: true });
